@@ -1213,7 +1213,7 @@ input[type="radio"] + label:before {
 /* Image */
 .image {
   border-radius: 0em;
-  border: 0;
+  border: 10;
   display: inline-block;
   position: relative; }
   .image img {
