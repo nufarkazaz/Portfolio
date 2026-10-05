@@ -2282,16 +2282,16 @@ article .image img {
     height: auto !important;
     display: block !important;
 }
-a.image.fit {
+.posts article a.image.fit {
   margin-bottom: 0 !important;
 }
 
-span.project-tag {
+.posts article span.project-tag {
   display: block !important;
   font-size: 0.8em !important;
   color: #888888 !important;
-  margin-top: -0.8em !important;
-  margin-bottom: 1.2em !important;
+  margin-top: -0.2em !important;
+  margin-bottom: 0.8em !important;
   font-weight: 500 !important;
   text-transform: none !important;
   letter-spacing: 0 !important;
