@@ -13,20 +13,32 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-.main header h1 {
-  font-size: 1.5rem;
-  margin-bottom: 24px;
+.project-hero-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.project-info-col {
+  flex: 1;
+}
+
+.project-info-col h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.project-gallery-col {
+  flex: 1.5;
 }
 
 .project-gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto 40px auto;
-  padding: 0 20px;
-  box-sizing: border-box;
 }
 
 .project-gallery-grid img {
@@ -38,14 +50,17 @@
 }
 
 @media (max-width: 736px) {
-  .main header h1 {
-    font-size: 1.3rem;
+  .project-hero-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .project-info-col h1 {
+    font-size: 1.5rem;
   }
 
   .project-gallery-grid {
     gap: 15px;
-    margin-bottom: 30px;
-    padding: 0 10px;
   }
 }
   .project-widgets-section {
@@ -159,16 +174,21 @@
 								</header>
 							<!-- Content -->
 								<section>
-									<header class="main">
-										<h1>Tzlil Music Center</h1>
-									</header>
-
-								<div class="project-gallery-grid">
-  <img src="images/Front-View.png" alt="Tzlil Music Center - Exterior View" />
-  <img src="images/Entrance-View.png" alt="Tzlil Music Center - Entrance" />
-  <img src="images/Sound-Bar.png" alt="Sound Bar & Live Performance" />
-  <img src="images/Shop.png" alt="Music Shop" />
+									<div class="project-hero-section">
+  <div class="project-info-col">
+    <h1>Tzlil Music Center</h1>
+  </div>
+  <div class="project-gallery-col">
+    <div class="project-gallery-grid">
+      <img src="images/Front-View.png" alt="Tzlil Music Center - Exterior View" />
+      <img src="images/Entrance-View.png" alt="Tzlil Music Center - Entrance" />
+      <img src="images/Sound-Bar.png" alt="Sound Bar & Live Performance" />
+      <img src="images/Shop.png" alt="Music Shop" />
+    </div>
+  </div>
 </div>
+
+<hr class="major" />
 								<section class="project-widgets-section">
   <div class="widgets-grid-four">
     
