@@ -2300,3 +2300,6 @@ article .image img {
 .posts article h4 {
   margin-bottom: 0.8em !important;
 }
+#menu ul ul li a {
+  text-transform: none;
+}
