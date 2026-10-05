@@ -2276,7 +2276,7 @@ img,
 .image img, 
 a.image img, 
 article .image img {
-    border: 5px solid #000000 !important;
+    border: 3px solid #000000 !important;
     box-sizing: border-box !important;
     max-width: 100% !important;
     height: auto !important;
