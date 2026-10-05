@@ -2283,16 +2283,16 @@ article .image img {
     display: block !important;
 }
 .image.fit {
-  margin-bottom: 0.5em !important;
+  margin-bottom: 0.2em !important;
 }
 
 .project-tag {
   display: block;
   font-size: 0.8em;
   color: #888888;
-  margin-top: 0;
-  margin-bottom: 1.2em;
+  margin-top: -0.8em !important;
+  margin-bottom: 1.2em !important;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none !important;
+  letter-spacing: 0;
 }
