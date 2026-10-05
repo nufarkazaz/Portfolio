@@ -2272,7 +2272,10 @@ button,
     margin-top: 0;
     padding-top: 0; }
 /* Custom 5px Black Frame for Images */
-.image img, article .image img {
+img, 
+.image img, 
+a.image img, 
+article .image img {
     border: 5px solid #000000 !important;
     box-sizing: border-box !important;
     max-width: 100% !important;
