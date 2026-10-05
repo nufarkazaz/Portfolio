@@ -2282,3 +2282,13 @@ article .image img {
     height: auto !important;
     display: block !important;
 }
+.project-tag {
+  display: block;
+  font-size: 0.8em;
+  color: #888888;
+  margin-top: 0.5em;
+  margin-bottom: 0.4em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
