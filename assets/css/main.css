@@ -2282,17 +2282,21 @@ article .image img {
     height: auto !important;
     display: block !important;
 }
-.image.fit {
-  margin-bottom: 0.2em !important;
+a.image.fit {
+  margin-bottom: 0 !important;
 }
 
-.project-tag {
-  display: block;
-  font-size: 0.8em;
-  color: #888888;
-  margin-top: -0.8em !important;
+span.project-tag {
+  display: block !important;
+  font-size: 0.8em !important;
+  color: #888888 !important;
+  margin-top: -1.2em !important;
   margin-bottom: 1.2em !important;
-  font-weight: 500;
+  font-weight: 500 !important;
   text-transform: none !important;
-  letter-spacing: 0;
+  letter-spacing: 0 !important;
+}
+
+.posts article h4 {
+  margin-bottom: 0.8em !important;
 }
