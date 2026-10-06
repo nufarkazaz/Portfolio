@@ -2442,3 +2442,38 @@ article .image img {
   #carousel-modal .prev-btn { left: 5px; }
   #carousel-modal .next-btn { right: 5px; }
 }
+/* Mobile Adjustments - Discrete Minimalist Controls */
+@media screen and (max-width: 768px) {
+  #carousel-modal .modal-content {
+    width: 95vw;
+    padding: 35px 12px 25px 12px;
+  }
+
+  #carousel-modal .close-modal {
+    top: 6px;
+    right: 12px;
+    font-size: 26px;
+    color: #666;
+  }
+
+  #carousel-modal .carousel-btn {
+    font-size: 22px !important;
+    color: #666 !important;
+    padding: 4px;
+    background: none !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #carousel-modal .carousel-btn:hover,
+  #carousel-modal .carousel-btn:focus,
+  #carousel-modal .carousel-btn:active {
+    color: #444 !important;
+    background: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  #carousel-modal .prev-btn { left: -2px; }
+  #carousel-modal .next-btn { right: -2px; }
+}
