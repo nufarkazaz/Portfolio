@@ -260,6 +260,25 @@
 			});
 
 })(jQuery);
+// Modal Controls
+function openCarouselModal() {
+  document.getElementById('carousel-modal').style.display = 'flex';
+  showSlide(slideIndex);
+}
+
+function closeCarouselModal() {
+  document.getElementById('carousel-modal').style.display = 'none';
+}
+
+// Close Modal when clicking outside the content box
+window.onclick = function(event) {
+  const modal = document.getElementById('carousel-modal');
+  if (event.target === modal) {
+    closeCarouselModal();
+  }
+};
+
+// Carousel Controls
 let slideIndex = 0;
 
 function showSlide(index) {
