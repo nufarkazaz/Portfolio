@@ -263,6 +263,7 @@
 // Modal Controls
 function openCarouselModal() {
   document.getElementById('carousel-modal').style.display = 'flex';
+  slideIndex = 0;
   showSlide(slideIndex);
 }
 
