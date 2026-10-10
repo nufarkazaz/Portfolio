@@ -2304,7 +2304,7 @@ article .image img {
   text-transform: none;
 }
 /* Modal Overlay Background */
-#carousel-modal, elevations-modal {
+#carousel-modal, #elevations-modal {
   display: none;
   position: fixed;
   z-index: 99999;
