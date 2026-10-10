@@ -260,6 +260,7 @@
 			});
 
 })(jQuery);
+
 // Modal Controls
 function openCarouselModal() {
   document.getElementById('carousel-modal').style.display = 'flex';
@@ -271,11 +272,27 @@ function closeCarouselModal() {
   document.getElementById('carousel-modal').style.display = 'none';
 }
 
+function openElevationsModal() {
+  document.getElementById('elevations-modal').style.display = 'flex';
+  elevationsSlideIndex = 0;
+  showElevationsSlide(elevationsSlideIndex);
+}
+
+function closeElevationsModal() {
+  document.getElementById('elevations-modal').style.display = 'none';
+}
+
 // Close Modal when clicking outside the content box
 window.onclick = function(event) {
-  const modal = document.getElementById('carousel-modal');
-  if (event.target === modal) {
+  const carouselModal = document.getElementById('carousel-modal');
+  const elevationsModal = document.getElementById('elevations-modal');
+
+  if (event.target === carouselModal) {
     closeCarouselModal();
+  }
+
+  if (event.target === elevationsModal) {
+    closeElevationsModal();
   }
 };
 
@@ -283,8 +300,8 @@ window.onclick = function(event) {
 let slideIndex = 0;
 
 function showSlide(index) {
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.dot');
+  const slides = document.querySelectorAll('#carousel-modal .carousel-slide');
+  const dots = document.querySelectorAll('#carousel-modal .dot');
 
   if (!slides.length) return;
 
@@ -306,4 +323,32 @@ function moveSlide(step) {
 function currentSlide(index) {
   slideIndex = index;
   showSlide(slideIndex);
+}
+
+let elevationsSlideIndex = 0;
+
+function showElevationsSlide(index) {
+  const slides = document.querySelectorAll('#elevations-modal .carousel-slide');
+  const dots = document.querySelectorAll('#elevations-modal .dot');
+
+  if (!slides.length) return;
+
+  if (index >= slides.length) elevationsSlideIndex = 0;
+  if (index < 0) elevationsSlideIndex = slides.length - 1;
+
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  slides[elevationsSlideIndex].classList.add('active');
+  if (dots[elevationsSlideIndex]) dots[elevationsSlideIndex].classList.add('active');
+}
+
+function moveElevationsSlide(step) {
+  elevationsSlideIndex += step;
+  showElevationsSlide(elevationsSlideIndex);
+}
+
+function currentElevationsSlide(index) {
+  elevationsSlideIndex = index;
+  showElevationsSlide(elevationsSlideIndex);
 }
