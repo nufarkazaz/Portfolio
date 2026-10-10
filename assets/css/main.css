@@ -2319,7 +2319,7 @@ article .image img {
 }
 
 /* Modal Content Box - Expanded for High Detail Drawings */
-#carousel-modal .modal-content {
+#carousel-modal #elevations-modal .modal-content {
   position: relative;
   background-color: #fff;
   padding: 35px 25px 20px 25px;
@@ -2332,7 +2332,7 @@ article .image img {
 }
 
 /* Close Button (X) - Cleanly positioned inside top right margin */
-#carousel-modal .close-modal {
+#carousel-modal #elevations-modal .close-modal {
   position: absolute;
   top: 8px;
   right: 15px;
@@ -2345,26 +2345,26 @@ article .image img {
   transition: color 0.2s ease;
 }
 
-#carousel-modal .close-modal:hover {
+#carousel-modal #elevations-modal .close-modal:hover {
   color: #000;
 }
 
 /* Carousel Outer Container */
-#carousel-modal .carousel-container {
+#carousel-modal #elevations-modal .carousel-container {
   position: relative;
   width: 100%;
 }
 
-#carousel-modal .carousel-slide {
+#carousel-modal #elevations-modal .carousel-slide {
   display: none !important;
 }
 
-#carousel-modal .carousel-slide.active {
+#carousel-modal #elevations-modal .carousel-slide.active {
   display: block !important;
 }
 
 /* Image Containment for Drawing Details */
-#carousel-modal .carousel-slide img {
+#carousel-modal #elevations-modal .carousel-slide img {
   width: 100%;
   max-height: 78vh;
   object-fit: contain;
@@ -2373,7 +2373,7 @@ article .image img {
 }
 
 /* Desktop Navigation Arrows (Positioned cleanly outside the image box) */
-#carousel-modal .carousel-btn {
+#carousel-modal #elevations-modal .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -2390,21 +2390,21 @@ article .image img {
   border-radius: 0 !important;
 }
 
-#carousel-modal .carousel-btn:hover {
+#carousel-modal #elevations-modal .carousel-btn:hover {
   color: #ffffff !important;
   transform: translateY(-50%) scale(1.15);
 }
 
-#carousel-modal .prev-btn { left: -65px; }
-#carousel-modal .next-btn { right: -65px; }
+#carousel-modal #elevations-modal .prev-btn { left: -65px; }
+#carousel-modal #elevations-modal .next-btn { right: -65px; }
 
 /* Navigation Dots */
-#carousel-modal .carousel-dots {
+#carousel-modal #elevations-modal .carousel-dots {
   text-align: center;
   padding-top: 10px;
 }
 
-#carousel-modal .dot {
+#carousel-modal #elevations-modal .dot {
   cursor: pointer;
   height: 8px;
   width: 8px;
@@ -2415,48 +2415,48 @@ article .image img {
   transition: background-color 0.2s ease;
 }
 
-#carousel-modal .dot.active, 
-#carousel-modal .dot:hover {
+#carousel-modal #elevations-modal .dot.active, 
+#carousel-modal #elevations-modal .dot:hover {
   background-color: #333;
 }
 
 /* Mobile Adjustments */
 @media screen and (max-width: 768px) {
-  #carousel-modal .modal-content {
+  #carousel-modal #elevations-modal .modal-content {
     width: 92vw;
     padding: 30px 10px 15px 10px;
   }
 
-  #carousel-modal .close-modal {
+  #carousel-modal #elevations-modal .close-modal {
     top: 5px;
     right: 12px;
     font-size: 28px;
   }
 
-  #carousel-modal .carousel-btn {
+  #carousel-modal #elevations-modal .carousel-btn {
     font-size: 24px !important;
     color: #444 !important;
     padding: 5px;
   }
 
-  #carousel-modal .prev-btn { left: 5px; }
-  #carousel-modal .next-btn { right: 5px; }
+  #carousel-modal #elevations-modal .prev-btn { left: 5px; }
+  #carousel-modal #elevations-modal .next-btn { right: 5px; }
 }
 /* Mobile Adjustments - Discrete Minimalist Controls */
 @media screen and (max-width: 768px) {
-  #carousel-modal .modal-content {
+  #carousel-modal #elevations-modal .modal-content {
     width: 95vw;
     padding: 35px 12px 25px 12px;
   }
 
-  #carousel-modal .close-modal {
+  #carousel-modal #elevations-modal .close-modal {
     top: 6px;
     right: 12px;
     font-size: 26px;
     color: #666;
   }
 
-  #carousel-modal .carousel-btn {
+  #carousel-modal #elevations-modal .carousel-btn {
     font-size: 22px !important;
     color: #666 !important;
     padding: 4px;
@@ -2465,15 +2465,15 @@ article .image img {
     -webkit-tap-highlight-color: transparent;
   }
 
-  #carousel-modal .carousel-btn:hover,
-  #carousel-modal .carousel-btn:focus,
-  #carousel-modal .carousel-btn:active {
+  #carousel-modal #elevations-modal .carousel-btn:hover,
+  #carousel-modal #elevations-modal .carousel-btn:focus,
+  #carousel-modal #elevations-modal .carousel-btn:active {
     color: #444 !important;
     background: none !important;
     outline: none !important;
     box-shadow: none !important;
   }
 
-  #carousel-modal .prev-btn { left: -2px; }
-  #carousel-modal .next-btn { right: -2px; }
+  #carousel-modal #elevations-modal .prev-btn { left: -2px; }
+  #carousel-modal #elevations-modal .next-btn { right: -2px; }
 }
