@@ -299,7 +299,7 @@
       <h3 class="widget-title">Project Overview</h3>
     </div>
 
-    <div class="widget-card" tabindex="0" id="widget-elevations">
+    <div class="widget-card" tabindex="0" id="widget-elevations" onclick="openElevationsModal()" style="cursor: pointer;">
       <div class="widget-icon">
         <i class="fa-solid fa-layer-group"></i>
       </div>
@@ -414,6 +414,38 @@
         <span class="dot active" onclick="currentSlide(0)"></span>
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Popup Gallery - Elevations & Sections -->
+<div id="elevations-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeElevationsModal()">&times;</span>
+
+    <div class="carousel-container">
+      <div class="carousel-slides">
+        <div class="carousel-slide active">
+          <img src="images/Elevation-South.jpg" alt="Elevation South">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/Elevations-East-West.jpg" alt="Elevations East-West">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/Sections-Small.jpg" alt="Sections Small">
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button class="carousel-btn prev-btn" type="button" onclick="moveElevationsSlide(-1)">&#10094;</button>
+      <button class="carousel-btn next-btn" type="button" onclick="moveElevationsSlide(1)">&#10095;</button>
+
+      <!-- Navigation Dots -->
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentElevationsSlide(0)"></span>
+        <span class="dot" onclick="currentElevationsSlide(1)"></span>
+        <span class="dot" onclick="currentElevationsSlide(2)"></span>
       </div>
     </div>
   </div>
