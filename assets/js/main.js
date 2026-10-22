@@ -282,11 +282,22 @@ function closeElevationsModal() {
   document.getElementById('elevations-modal').style.display = 'none';
 }
 
+function openConstructionModal() {
+  document.getElementById('construction-modal').style.display = 'flex';
+  constructionSlideIndex = 0;
+  showConstructionSlide(constructionSlideIndex);
+}
+
+function closeConstructionModal() {
+  document.getElementById('construction-modal').style.display = 'none';
+}
+
 // Close Modal when clicking outside the content box
 window.onclick = function(event) {
   const carouselModal = document.getElementById('carousel-modal');
   const elevationsModal = document.getElementById('elevations-modal');
-
+  const constructionModal = document.getElementById('construction-modal');
+	
   if (event.target === carouselModal) {
     closeCarouselModal();
   }
@@ -294,6 +305,9 @@ window.onclick = function(event) {
   if (event.target === elevationsModal) {
     closeElevationsModal();
   }
+ if (event.target === constructionModal) {
+    closeConstructionModal();
+  }	
 };
 
 // Carousel Controls
@@ -351,4 +365,32 @@ function moveElevationsSlide(step) {
 function currentElevationsSlide(index) {
   elevationsSlideIndex = index;
   showElevationsSlide(elevationsSlideIndex);
+}
+
+let constructionSlideIndex = 0;
+
+function showConstructionSlide(index) {
+  const slides = document.querySelectorAll('#construction-modal .carousel-slide');
+  const dots = document.querySelectorAll('#construction-modal .dot');
+
+  if (!slides.length) return;
+
+  if (index >= slides.length) constructionSlideIndex = 0;
+  if (index < 0) constructionSlideIndex = slides.length - 1;
+
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  slides[constructionSlideIndex].classList.add('active');
+  if (dots[constructionSlideIndex]) dots[constructionSlideIndex].classList.add('active');
+}
+
+function moveConstructionSlide(step) {
+  constructionSlideIndex += step;
+  showConstructionSlide(constructionSlideIndex);
+}
+
+function currentConstructionSlide(index) {
+  constructionSlideIndex = index;
+  showConstructionSlide(constructionSlideIndex);
 }
