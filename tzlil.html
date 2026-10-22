@@ -306,7 +306,7 @@
       <h3 class="widget-title">Selected Elevations & Sections</h3>
     </div>
 
-    <div class="widget-card" tabindex="0" id="widget-details">
+    <div class="widget-card" tabindex="0" id="widget-details"> onclick="openConstructionModal()" style="cursor: pointer;">
       <div class="widget-icon">
         <i class="fa-solid fa-hammer"></i>
       </div>
@@ -451,6 +451,34 @@
   </div>
 </div>
 
+		<!-- Modal Popup Gallery - Construction Details -->
+<div id="construction-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeConstructionModal()">&times;</span>
+
+    <div class="carousel-container">
+      <div class="carousel-slides">
+        <div class="carousel-slide active">
+          <img src="images/Alucobond.jpg" alt="Alucobond facade detail">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/Corian.jpg" alt="Corian material detail">
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button class="carousel-btn prev-btn" type="button" onclick="moveConstructionSlide(-1)">&#10094;</button>
+      <button class="carousel-btn next-btn" type="button" onclick="moveConstructionSlide(1)">&#10095;</button>
+
+      <!-- Navigation Dots -->
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentConstructionSlide(0)"></span>
+        <span class="dot" onclick="currentConstructionSlide(1)"></span>
+      </div>
+    </div>
+  </div>
+</div>
+		
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
