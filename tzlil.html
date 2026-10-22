@@ -313,7 +313,7 @@
       <h3 class="widget-title">Construction Details</h3>
     </div>
 
-    <div class="widget-card" tabindex="0" id="widget-interior">
+    <div class="widget-card" tabindex="0" id="widget-interior" onclick="openInteriorModal()" style="cursor: pointer;">
       <div class="widget-icon">
         <i class="fa-solid fa-couch"></i>
       </div>
@@ -478,7 +478,43 @@
     </div>
   </div>
 </div>
-		
+
+<!-- Modal Popup Gallery - Interior Design -->
+<div id="interior-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeInteriorModal()">&times;</span>
+
+    <div class="carousel-container">
+      <div class="carousel-slides">
+        <div class="carousel-slide active">
+          <img src="images/Interior%20Design" alt="Interior Design">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/Furniture-Design.jpg" alt="Furniture Design">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/Wall-Layout.jpg" alt="Wall Layout">
+        </div>
+        <div class="carousel-slide">
+          <img src="images/Renderings.jpg" alt="Renderings">
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button class="carousel-btn prev-btn" type="button" onclick="moveInteriorSlide(-1)">&#10094;</button>
+      <button class="carousel-btn next-btn" type="button" onclick="moveInteriorSlide(1)">&#10095;</button>
+
+      <!-- Navigation Dots -->
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentInteriorSlide(0)"></span>
+        <span class="dot" onclick="currentInteriorSlide(1)"></span>
+        <span class="dot" onclick="currentInteriorSlide(2)"></span>
+        <span class="dot" onclick="currentInteriorSlide(3)"></span>
+      </div>
+    </div>
+  </div>
+</div>
+				
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
