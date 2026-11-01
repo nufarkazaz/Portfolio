@@ -302,13 +302,35 @@ function closeInteriorModal() {
   document.getElementById('interior-modal').style.display = 'none';
 }
 
+function openDownloadModal() {
+  document.getElementById('download-modal').style.display = 'flex';
+}
+
+function closeDownloadModal() {
+  document.getElementById('download-modal').style.display = 'none';
+}
+
+function downloadPdf() {
+  const pdfUrl = 'https://drive.google.com/uc?export=download&id=1OkaKxNSH73lpx0co86TesoeswzihD4at';
+
+  closeDownloadModal();
+
+  const link = document.createElement('a');
+  link.href = pdfUrl;
+  link.download = 'Tzlil-Music-Center-Book.pdf';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
 // Close Modal when clicking outside the content box
 window.onclick = function(event) {
   const carouselModal = document.getElementById('carousel-modal');
   const elevationsModal = document.getElementById('elevations-modal');
   const constructionModal = document.getElementById('construction-modal');
   const interiorModal = document.getElementById('interior-modal');
-	
+  const downloadModal = document.getElementById('download-modal');
+
   if (event.target === carouselModal) {
     closeCarouselModal();
   }
@@ -316,11 +338,17 @@ window.onclick = function(event) {
   if (event.target === elevationsModal) {
     closeElevationsModal();
   }
- if (event.target === constructionModal) {
+
+  if (event.target === constructionModal) {
     closeConstructionModal();
-  }	
- if (event.target === interiorModal) {
+  }
+
+  if (event.target === interiorModal) {
     closeInteriorModal();
+  }
+
+  if (event.target === downloadModal) {
+    closeDownloadModal();
   }
 };
 
