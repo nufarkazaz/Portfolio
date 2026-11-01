@@ -237,6 +237,69 @@
 #menu .opener:hover {
   color: #f56a6a !important;
 }
+
+.download-confirm-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.download-confirm-content {
+  position: relative;
+  background: #fff;
+  width: min(420px, 90vw);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  padding: 30px 24px 22px;
+  text-align: center;
+}
+
+.download-confirm-content h3 {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  color: #3d4449;
+}
+
+.download-confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.download-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background: #e2e2e2;
+}
+
+.confirm-btn {
+  background: #c5a059;
+  color: #fff;
+}
+
+.confirm-btn:hover {
+  background: #b38d42;
+}
+	
 </style>
 	</head>
 	<body class="is-preload">
@@ -323,12 +386,12 @@
   </div>
 
   <div class="widget-cta-wrapper">
-    <a href="#full-project" class="widget-card widget-card-cta" id="widget-full-project">
-      <div class="widget-icon">
-        <i class="fa-regular fa-file-pdf"></i>
-      </div>
-      <h3 class="widget-title">Full Project Book</h3>
-    </a>
+  <button type="button" class="widget-card widget-card-cta" id="widget-full-project" onclick="openDownloadModal()">
+  <div class="widget-icon">
+    <i class="fa-regular fa-file-pdf"></i>
+  </div>
+  <h3 class="widget-title">Full Project Book</h3>
+</button>
   </div>
 </section>
 </section>
@@ -514,7 +577,18 @@
     </div>
   </div>
 </div>
-				
+
+<div id="download-modal" class="download-confirm-modal">
+  <div class="download-confirm-content">
+    <span class="close-modal" onclick="closeDownloadModal()">&times;</span>
+    <h3>Would you like to download this file?</h3>
+    <div class="download-confirm-actions">
+      <button type="button" class="download-btn cancel-btn" onclick="closeDownloadModal()">No</button>
+      <button type="button" class="download-btn confirm-btn" onclick="downloadPdf()">Yes</button>
+    </div>
+  </div>
+</div>
+		
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
