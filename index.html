@@ -153,6 +153,33 @@
 			<script src="assets/js/main.js"></script>
 
 <style>
+  #cvButton {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    padding: 0 !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    font-size: 0.9rem !important;
+    text-shadow: none !important;
+    cursor: pointer;
+    text-decoration: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    outline: none !important;
+  }
+
+  #cvButton:hover,
+  #cvButton:focus,
+  #cvButton:active {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    outline: none !important;
+  }
+
   .cv-modal {
     position: fixed;
     inset: 0;
@@ -188,7 +215,7 @@
 
   .cv-close {
     position: absolute;
-    top: -32px;
+    top: -28px;
     right: -10px;
     z-index: 2;
     border: none;
@@ -201,10 +228,14 @@
     line-height: 1;
     cursor: pointer;
     padding: 0;
+    box-shadow: none;
   }
 
-  .cv-close:hover {
+  .cv-close:hover,
+  .cv-close:focus {
     color: #f0f0f0;
+    background: transparent;
+    outline: none;
   }
 </style>
 
