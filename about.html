@@ -6,29 +6,47 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css?v=2" />
 		<style>
-			.about-columns {
+		.about-columns {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				gap: 3em;
-				align-items: start;
+				align-items: stretch;
 			}
 
 			.about-text p {
 				margin-bottom: 1.5em;
 			}
 
+			.about-photo,
+			.about-photo .image.fit {
+				height: 100%;
+			}
+
 			.about-photo .image.fit img {
 				display: block;
-				width: 3cm;
-				height: 3cm;
-				max-width: 100%;
-				object-fit: cover;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				object-position: top center;
+			}
+
+			.about-page-title {
+				font-size: 2em;
 			}
 
 			@media screen and (max-width: 736px) {
 				.about-columns {
 					grid-template-columns: 1fr;
 					gap: 1.5em;
+				}
+
+				.about-photo,
+				.about-photo .image.fit {
+					height: auto;
+				}
+
+				.about-photo .image.fit img {
+					height: auto;
 				}
 			}
 		</style>
@@ -43,7 +61,7 @@
 
 					<section>
 						<header class="major">
-							<h1>Nufar Kazaz</h1>
+						<h1 class="about-page-title">Nufar Kazaz</h1>
 						</header>
 
 						<div class="about-columns">
