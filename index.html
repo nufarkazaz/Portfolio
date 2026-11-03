@@ -236,12 +236,50 @@
     outline: none;
     background: transparent;
   }
+
+	.cv-mobile-pages {
+    display: none;
+  }
+
+  @media screen and (max-width: 736px) {
+    .cv-modal-content {
+      width: 96vw;
+      height: 86vh;
+      height: 86dvh;
+    }
+
+    .cv-modal-content iframe {
+      display: none;
+    }
+
+    .cv-mobile-pages {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 10px;
+      background: #525659;
+      border-radius: 10px;
+    }
+
+    .cv-mobile-pages canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 12px;
+      background: #fff;
+    }
+  }
+	
 </style>
 
 <div id="cvModal" class="cv-modal" aria-hidden="true">
   <div class="cv-modal-content" role="dialog" aria-modal="true" aria-label="CV Viewer">
     <button type="button" class="cv-close" aria-label="Close CV">×</button>
-    <iframe src="files/Nufar-Kazaz-CV.pdf" title="Nufar Kazaz CV"></iframe>
+  <iframe src="files/Nufar-Kazaz-CV.pdf" title="Nufar Kazaz CV"></iframe>
+<div id="cvMobilePages" class="cv-mobile-pages" aria-label="Scrollable CV pages"></div>
   </div>
 </div>
 
@@ -249,36 +287,102 @@
   (function () {
     var cvButton = document.getElementById('cvButton');
     var cvModal = document.getElementById('cvModal');
-    var closeBtn = document.querySelector('.cv-close');
+    var closeButton = document.querySelector('.cv-close');
+    var mobilePages = document.getElementById('cvMobilePages');
+    var mobileScreen = window.matchMedia('(max-width: 736px)');
+    var pdfLibraryPromise;
+    var renderPromise;
 
-    if (cvButton) {
-      cvButton.addEventListener('click', function (event) {
-        event.preventDefault();
-        cvModal.classList.add('open');
-        cvModal.setAttribute('aria-hidden', 'false');
-      });
+    function loadPdfLibrary() {
+      if (!pdfLibraryPromise) {
+        pdfLibraryPromise = new Promise(function (resolve, reject) {
+          var script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+
+      return pdfLibraryPromise;
     }
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function () {
-        cvModal.classList.remove('open');
-        cvModal.setAttribute('aria-hidden', 'true');
-      });
-    }
+    async function renderMobilePdf() {
+      if (renderPromise) {
+        return renderPromise;
+      }
 
-    if (cvModal) {
-      cvModal.addEventListener('click', function (event) {
-        if (event.target === cvModal) {
-          cvModal.classList.remove('open');
-          cvModal.setAttribute('aria-hidden', 'true');
+      renderPromise = (async function () {
+        mobilePages.textContent = 'Loading CV…';
+
+        try {
+          await loadPdfLibrary();
+
+          pdfjsLib.GlobalWorkerOptions.workerSrc =
+            'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+          var pdf = await pdfjsLib.getDocument('files/Nufar-Kazaz-CV.pdf').promise;
+          mobilePages.replaceChildren();
+
+          for (var pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+            var page = await pdf.getPage(pageNumber);
+            var baseViewport = page.getViewport({ scale: 1 });
+            var scale = Math.min((mobilePages.clientWidth - 20) / baseViewport.width, 1.5);
+            var viewport = page.getViewport({ scale: scale });
+            var pixelRatio = window.devicePixelRatio || 1;
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+
+            canvas.width = Math.floor(viewport.width * pixelRatio);
+            canvas.height = Math.floor(viewport.height * pixelRatio);
+            canvas.style.width = viewport.width + 'px';
+            canvas.style.height = viewport.height + 'px';
+            mobilePages.appendChild(canvas);
+
+            await page.render({
+              canvasContext: context,
+              viewport: viewport,
+              transform: pixelRatio === 1
+                ? null
+                : [pixelRatio, 0, 0, pixelRatio, 0, 0]
+            }).promise;
+          }
+        } catch (error) {
+          console.error('Could not display the CV on mobile:', error);
+          renderPromise = null;
+          mobilePages.textContent = 'The CV could not be loaded. Please try again.';
         }
-      });
+      }());
+
+      return renderPromise;
     }
+
+    function closeModal() {
+      cvModal.classList.remove('open');
+      cvModal.setAttribute('aria-hidden', 'true');
+    }
+
+    cvButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      cvModal.classList.add('open');
+      cvModal.setAttribute('aria-hidden', 'false');
+
+      if (mobileScreen.matches && !mobilePages.hasChildNodes()) {
+        renderMobilePdf();
+      }
+    });
+
+    closeButton.addEventListener('click', closeModal);
+
+    cvModal.addEventListener('click', function (event) {
+      if (event.target === cvModal) {
+        closeModal();
+      }
+    });
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && cvModal) {
-        cvModal.classList.remove('open');
-        cvModal.setAttribute('aria-hidden', 'true');
+      if (event.key === 'Escape' && cvModal.classList.contains('open')) {
+        closeModal();
       }
     });
   }());
