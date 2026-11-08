@@ -39,10 +39,6 @@
 				margin-bottom: 16px;
 			}
 
-			.project-gallery-col {
-				flex: 1.5;
-			}
-
 			.project-history {
 				font-size: 1.05rem;
 				line-height: 1.6;
@@ -69,15 +65,8 @@
 				color: #222;
 			}
 
-			.project-inspiration {
-				margin-top: 24px;
-			}
-
-			.project-inspiration img {
-				display: block;
-				width: 100%;
-				height: auto;
-				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			.project-gallery-col {
+				flex: 1.5;
 			}
 
 			.project-gallery-grid {
@@ -94,9 +83,9 @@
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 			}
 
-			.widgets-grid-two {
+			.widgets-grid-three {
 				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
+				grid-template-columns: repeat(3, minmax(0, 1fr));
 				gap: 20px;
 				margin: 40px 0;
 			}
@@ -144,6 +133,14 @@
 			.widget-card:focus .widget-icon {
 				color: #c5a059;
 				transform: scale(1.1);
+			}
+
+			.overview-image {
+				display: block;
+				width: 100%;
+				max-height: 78vh;
+				object-fit: contain;
+				margin: 0 auto;
 			}
 
 			.modal {
@@ -273,10 +270,14 @@
 					flex-direction: column;
 					gap: 20px;
 				}
+
+				.widgets-grid-three {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
 			}
 
 			@media (max-width: 736px) {
-				.widgets-grid-two {
+				.widgets-grid-three {
 					grid-template-columns: 1fr;
 				}
 
@@ -285,7 +286,8 @@
 					padding: 40px 10px 15px;
 				}
 
-				.carousel-slide img {
+				.carousel-slide img,
+				.overview-image {
 					max-height: 75vh;
 				}
 
@@ -327,7 +329,7 @@
 								<h1>Shitah Kindergarten Complex</h1>
 								<p class="project-subtitle">Second Year Academic Project</p>
 								<p class="project-description">
-									An educational complex combining kindergarten classrooms, activity hubs, and therapeutic spaces for learning, speech, and developmental support.   
+									An educational complex combining kindergarten classrooms, activity hubs, and therapeutic spaces for learning, speech, and developmental support.
 								</p>
 
 								<p class="project-history">
@@ -335,12 +337,8 @@
 								</p>
 								<ul class="project-meta">
 									<li><strong>Location:</strong> Zichron Ya'acov, Israel</li>
-									<li><strong>Role:</strong> Architectural Design & Interior Planning</li>
+									<li><strong>Role:</strong> Architectural Design &amp; Interior Planning</li>
 								</ul>
-
-								<div class="project-inspiration">
-									<img src="images/Inspiration-Shitah.jpg" alt="Design inspiration for the Shitah Kindergarten Complex" />
-								</div>
 							</div>
 
 							<div class="project-gallery-col">
@@ -355,14 +353,19 @@
 
 						<hr class="major" />
 
-						<div class="widgets-grid-two">
+						<div class="widgets-grid-three">
+							<button type="button" class="widget-card" data-carousel="project-overview-modal">
+								<span class="widget-icon"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></span>
+								<span class="widget-title">Project Overview</span>
+							</button>
+
 							<button type="button" class="widget-card" data-carousel="floor-plans-modal">
-								<span class="widget-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+								<span class="widget-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
 								<span class="widget-title">Floor Plans</span>
 							</button>
 
 							<button type="button" class="widget-card" data-carousel="elevations-sections-modal">
-								<span class="widget-icon"><i class="fa-solid fa-house" aria-hidden="true"></i>
+								<span class="widget-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
 								<span class="widget-title">Selected Elevations &amp; Sections</span>
 							</button>
 						</div>
@@ -407,6 +410,13 @@
 						<p class="copyright">&copy; Nufar Kazaz. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
 				</div>
+			</div>
+		</div>
+
+		<div id="project-overview-modal" class="modal" aria-hidden="true">
+			<div class="modal-content" role="dialog" aria-modal="true" aria-label="Project Overview">
+				<button type="button" class="close-modal" aria-label="Close project overview">&times;</button>
+				<img class="overview-image" src="images/Inspiration-Shitah.jpg" alt="Shitah Kindergarten project inspiration overview" />
 			</div>
 		</div>
 
@@ -456,43 +466,49 @@
 					var modal = document.getElementById(widget.getAttribute('data-carousel'));
 					modal.classList.add('open');
 					modal.setAttribute('aria-hidden', 'false');
-					showSlide(modal, 0);
+					if (modal.showSlide) modal.showSlide(0);
 				});
 			});
 
 			document.querySelectorAll('.modal').forEach(function (modal) {
 				var dots = modal.querySelectorAll('.carousel-dots button');
 				var current = 0;
+				var slides = modal.querySelectorAll('.carousel-slide');
 
-				function showSlide(container, index) {
-					var allSlides = container.querySelectorAll('.carousel-slide');
-					var allDots = container.querySelectorAll('.carousel-dots button');
-					current = (index + allSlides.length) % allSlides.length;
-
-					allSlides.forEach(function (slide, i) {
+				function showSlide(index) {
+					if (!slides.length) return;
+					current = (index + slides.length) % slides.length;
+					slides.forEach(function (slide, i) {
 						slide.classList.toggle('active', i === current);
 					});
-					allDots.forEach(function (dot, i) {
+					dots.forEach(function (dot, i) {
 						dot.classList.toggle('active', i === current);
 					});
 				}
 
+				modal.showSlide = showSlide;
 				modal.querySelector('.close-modal').addEventListener('click', function () {
 					modal.classList.remove('open');
 					modal.setAttribute('aria-hidden', 'true');
 				});
 
-				modal.querySelector('.prev-btn').addEventListener('click', function () {
-					showSlide(modal, current - 1);
-				});
+				var previousButton = modal.querySelector('.prev-btn');
+				if (previousButton) {
+					previousButton.addEventListener('click', function () {
+						showSlide(current - 1);
+					});
+				}
 
-				modal.querySelector('.next-btn').addEventListener('click', function () {
-					showSlide(modal, current + 1);
-				});
+				var nextButton = modal.querySelector('.next-btn');
+				if (nextButton) {
+					nextButton.addEventListener('click', function () {
+						showSlide(current + 1);
+					});
+				}
 
 				dots.forEach(function (dot, index) {
 					dot.addEventListener('click', function () {
-						showSlide(modal, index);
+						showSlide(index);
 					});
 				});
 
@@ -502,13 +518,7 @@
 						modal.setAttribute('aria-hidden', 'true');
 					}
 				});
-
-				modal.showSlide = showSlide;
 			});
-
-			function showSlide(modal, index) {
-				modal.showSlide(modal, index);
-			}
 
 			document.addEventListener('keydown', function (event) {
 				if (event.key === 'Escape') {
