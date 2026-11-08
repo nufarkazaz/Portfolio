@@ -68,7 +68,18 @@
 			.project-meta strong {
 				color: #222;
 			}
-			
+
+			.project-inspiration {
+				margin-top: 24px;
+			}
+
+			.project-inspiration img {
+				display: block;
+				width: 100%;
+				height: auto;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			}
+
 			.project-gallery-grid {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
@@ -319,13 +330,17 @@
 									An educational complex combining kindergarten classrooms, activity hubs, and therapeutic spaces for learning, speech, and developmental support.   
 								</p>
 
-								  <p class="project-history">
-									      Inspired by a children’s treehouse, the project steps down the hillside to bridge three elevation levels while drawing inspiration from the natural landscape of Ramat HaNadiv.
-									    </p>
-								 <ul class="project-meta">
-									      <li><strong>Location:</strong> Zichron Ya'acov, Israel</li>
-									      <li><strong>Role:</strong> Architectural Design & Interior Planning</li>
-									    </ul>
+								<p class="project-history">
+									Inspired by a children’s treehouse, the project steps down the hillside to bridge three elevation levels while drawing inspiration from the natural landscape of Ramat HaNadiv.
+								</p>
+								<ul class="project-meta">
+									<li><strong>Location:</strong> Zichron Ya'acov, Israel</li>
+									<li><strong>Role:</strong> Architectural Design & Interior Planning</li>
+								</ul>
+
+								<div class="project-inspiration">
+									<img src="images/Inspiration-Shitah.jpg" alt="Design inspiration for the Shitah Kindergarten Complex" />
+								</div>
 							</div>
 
 							<div class="project-gallery-col">
@@ -446,7 +461,6 @@
 			});
 
 			document.querySelectorAll('.modal').forEach(function (modal) {
-				var slides = modal.querySelectorAll('.carousel-slide');
 				var dots = modal.querySelectorAll('.carousel-dots button');
 				var current = 0;
 
